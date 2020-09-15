@@ -1,0 +1,20 @@
+# action.yml
+name: 'Buildfish'
+description: 'Build SailfishOS apps with Docker'
+inputs:
+  release:
+    description: 'SailfishOS release (check https://hub.docker.com/r/coderus/sailfishos-platform-sdk/tags)'
+    required: true
+    default: 3.3.0.14
+  arch:
+    description: 'Build arch (e.g. armv7hl, i486)'
+    default: 'armv7hl'
+
+runs:
+  using: 'composite'
+  steps: 
+    - run: bash -ex $GITHUB_ACTION_PATH/build.sh
+      shell: bash
+      env:
+        INPUT_RELEASE: ${{ inputs.release }}
+        INPUT_ARCH: ${{ inputs.arch }}
