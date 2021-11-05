@@ -1,4 +1,4 @@
-FROM coderus/sailfishos-platform-sdk:3.3.0.14
+FROM coderus/sailfishos-platform-sdk:4.0.2.21
 
 ADD build.sh /home/nemo/
 
