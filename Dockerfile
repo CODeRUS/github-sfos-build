@@ -1,11 +1,11 @@
 FROM coderus/sailfishos-platform-sdk:4.0.2.21
 
-ADD build.sh /home/nemo/
+ADD build.sh /home/mersdk/
 
-ENV HOME=/home/nemo
+ENV HOME=/home/mersdk
 
 RUN set -ex ;\
-  mkdir -p /home/nemo/build ;\
-  sudo chmod +x /home/nemo/build.sh
+  mkdir -p /home/mersdk/build ;\
+  sudo chmod +x /home/mersdk/build.sh
 
-ENTRYPOINT ["/home/nemo/build.sh"]
+ENTRYPOINT ["/home/mersdk/build.sh"]
