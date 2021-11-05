@@ -5,14 +5,14 @@ inputs:
   release:
     description: 'SailfishOS release (check https://hub.docker.com/r/coderus/sailfishos-platform-sdk/tags)'
     required: true
-    default: 3.3.0.14
+    default: 4.0.2.21
   arch:
     description: 'Build arch (e.g. armv7hl, i486)'
     default: 'armv7hl'
 
 runs:
   using: 'composite'
-  steps: 
+  steps:
     - run: bash -ex $GITHUB_ACTION_PATH/build.sh
       shell: bash
       env:

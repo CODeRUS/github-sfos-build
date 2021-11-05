@@ -2,4 +2,4 @@
 
 set -ex
 
-mkdir -p /home/nemo/build
+mkdir -p /home/mersdk/build
