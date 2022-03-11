@@ -5,7 +5,7 @@ inputs:
   release:
     description: 'SailfishOS release (check https://hub.docker.com/r/coderus/sailfishos-platform-sdk/tags)'
     required: true
-    default: 4.0.2.21
+    default: 4.1.0.24
   arch:
     description: 'Build arch (e.g. armv7hl, i486)'
     default: 'armv7hl'
