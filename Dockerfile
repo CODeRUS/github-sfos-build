@@ -1,4 +1,4 @@
-FROM coderus/sailfishos-platform-sdk:4.0.2.21
+FROM coderus/sailfishos-platform-sdk:4.1.0.24
 
 ADD build.sh /home/mersdk/
 
