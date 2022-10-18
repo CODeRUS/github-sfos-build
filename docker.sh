@@ -2,11 +2,8 @@
 
 set -ex
 
-mkdir -p /home/mersdk/build
-cd /home/mersdk/build
-
-sudo mkdir -p /workspace/RPMS
-cp -r /workspace/* /home/mersdk/build
-
+mkdir -p build
+cd build
+cp -r /workspace/* .
 mb2 -t SailfishOS-${INPUT_RELEASE}-${INPUT_ARCH} build
 sudo cp -r RPMS/*.rpm /workspace/RPMS
