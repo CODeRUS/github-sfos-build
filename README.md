@@ -1,4 +1,4 @@
-## GitHub-action for building Sailfish OS apps
+## Github action for building SailFish OS apps
 
 For the available SailFish OS build target releases:
 
