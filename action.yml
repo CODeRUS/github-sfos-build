@@ -18,3 +18,5 @@ runs:
       env:
         INPUT_RELEASE: ${{ inputs.release }}
         INPUT_ARCH: ${{ inputs.arch }}
+        RELEASE: ${{ inputs.release }}
+        ARCH: ${{ inputs.arch }}
