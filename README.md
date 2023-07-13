@@ -34,9 +34,10 @@ For a complete example, see [here](https://github.com/storeman-developers/harbou
 
 ### Useful cases
 
-Two useful cases are listed here here below:
+Three useful cases are listed here here below:
 
 * [build on demand](examples/build-on-demand.yml)
+* [build on pull](examples/build-on-pull.yml)
 * [build on tags](examples/build-on-tags.yml)
 
-Also build on tags can be run on-demand by user for test pourposes but it also run when triggered by a tag set on the HEAD of the default branch. Therefore the second example includes and extend the functionality of the first one. Both, just a matter of aesthetic.
+Also build on tags can be run on-demand by user for test pourposes but it also run when triggered by a tag set on the HEAD of the default branch. Therefore the last example includes and extend the functionality of the first one. About the *build on pull*, same story but triggered by a pull instead.
