@@ -1,0 +1,61 @@
+name: build on demand
+
+env:
+  SFOS_RELEASE: 4.5.0.16
+
+on:
+  workflow_dispatch:
+    branches:
+    - default
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    env:
+      SEGMENT_DOWNLOAD_TIMEOUT_MINS: 2
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+#RAF: Using the cache with docker requires that you have a dockerhub account and manage it as well.
+#     But it's much more powerful. Instead of saving just a directory, you will save an the docker.
+#   - name: Cache
+#     id: yamui-cache
+#     uses: actions/cache@v3
+#     with:
+#       path: RPMS
+#       key: ${{ runner.os }}-${{ cache.name }}-${{ hashFiles('**/lockfiles') }}
+#       restore-keys: |
+#         ${{ runner.os }}-yamui
+#         ${{ runner.os }}-
+
+    - name: Prepare
+      run: mkdir -p RPMS
+
+    - name: ARM64 build for ${{ env.ARCH }} on ${{ env.RELEASE }}
+      env:
+        ARCH: aarch64
+        RELEASE: ${{ env.SFOS_RELEASE }}
+      uses: robang74/github-sfos-apps-build@master
+      with:
+        release: ${{ env.RELEASE }}
+        arch: ${{ env.ARCH }}
+
+    - name: Upload build results
+      uses: actions/upload-artifact@v3
+      with:
+        name: RPMS build results
+        path: RPMS
+
+    - name: Create release
+      if: contains(github.ref, 'release')
+      run: |
+        set -x
+        assets=()
+        for asset in RPMS/*.rpm; do
+          assets+=("-a" "$asset")
+        done
+        tag_name="${GITHUB_REF##*/}"
+        hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
