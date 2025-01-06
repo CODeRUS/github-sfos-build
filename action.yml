@@ -9,6 +9,9 @@ inputs:
   arch:
     description: 'Build arch (e.g. armv7hl, i486)'
     default: 'armv7hl'
+  suffix:
+    description: 'Docker image suffix. Empty by default'
+    default: ''
 
 runs:
   using: 'composite'
@@ -18,3 +21,4 @@ runs:
       env:
         INPUT_RELEASE: ${{ inputs.release }}
         INPUT_ARCH: ${{ inputs.arch }}
+        INPUT_SUFFIX: ${{ inputs.suffix }}
