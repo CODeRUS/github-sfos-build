@@ -5,7 +5,14 @@
 For the available Sailfish OS build target releases, see https://hub.docker.com/r/coderus/sailfishos-platform-sdk/tags
 
 #### Usage
-* For Sailfish OS build target releases ≥ 4.1.0
+* For Sailfish OS build target releases >= 5.0.0
+  ```
+  uses: coderus/github-sfos-build@sfos5
+      with:
+        release: <release>
+        arch: <arch>
+  ```
+* For Sailfish OS build target releases < 5.0.0
   ```
   uses: coderus/github-sfos-build@master
       with:
